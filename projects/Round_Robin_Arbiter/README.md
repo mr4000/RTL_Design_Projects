@@ -38,16 +38,16 @@ If a requester drops its request early, the arbiter immediately switches to the 
 
  2. **Simple, Synthesizable Logic**
  
- The rotated request selection is implemented using a straight-forward `case(pointer)` structure:
- 
- ```verilog
- case (pointer)
-   0: check 0, then 1, then 2, then 3;
-   1: check 1, then 2, then 3, then 0;
-   2: check 2, then 3, then 0, then 1;
-   3: check 3, then 0, then 1, then 2;
- endcase
- ```
+     The rotated request selection is implemented using a straight-forward `case(pointer)` structure:
+     
+     ```verilog
+     case (pointer)
+       0: check 0, then 1, then 2, then 3;
+       1: check 1, then 2, then 3, then 0;
+       2: check 2, then 3, then 0, then 1;
+       3: check 3, then 0, then 1, then 2;
+     endcase
+     ```
  
     This makes the arbiter:
    
