@@ -5,17 +5,17 @@ Round Robin Arbiter (Variable Time Slice + Pointer-Based Fairness)
 This repository contains a synthesizable 4-request Round Robin Arbiter implemented in Verilog.
 The arbiter supports:
 
-- Fair scheduling (true round-robin rotation)
+- ## Fair scheduling (true round-robin rotation)
 
-Variable time slice per requester
+- ## Variable time slice per requester
 
-Glitch-free registered outputs
+- ## Glitch-free registered outputs
 
-Pointer-based rotating priority logic
+- ## Pointer-based rotating priority logic
 
-Clean FSM-based design
+- ## Clean FSM-based design
 
-Simple testbench included
+- ## Simple testbench included
 
 ## What This Arbiter Does
 
@@ -57,13 +57,10 @@ endcase
 
 This makes the arbiter:
 
-easy to read,
-
-easy to debug,
-
-efficient in hardware,
-
-and 100% synthesizable on all EDA tools.
+- easy to read,
+- easy to debug,
+- efficient in hardware,
+- and 100% synthesizable on all EDA tools.
 
 3. One-Hot Encoded FSM
 
