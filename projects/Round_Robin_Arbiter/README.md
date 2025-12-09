@@ -22,27 +22,23 @@ If a requester drops its request early, the arbiter immediately switches to the 
 
 ## Key Features
 
- 1. True Fairness Using Pointer-Based Rotation
+ 
+### Priority Order Based on Pointer
 
-Unlike static-priority arbiters that always start checking from requester 0, this design uses a 2-bit pointer:
+| pointer | Priority Order     |
+|--------|---------------------|
+|   0    | 0 → 1 → 2 → 3       |
+|   1    | 1 → 2 → 3 → 0       |
+|   2    | 2 → 3 → 0 → 1       |
+|   3    | 3 → 0 → 1 → 2       |
 
-pointer = next requester that should receive highest priority
-
-Example priority order based on pointer:
-
-| pointer | Priority Order |
-| ------- | -------------- |
-| 0       | 0 → 1 → 2 → 3  |
-| 1       | 1 → 2 → 3 → 0  |
-| 2       | 2 → 3 → 0 → 1  |
-| 3       | 3 → 0 → 1 → 2  |
+The pointer updates **after every completed grant**, ensuring the next arbitration cycle begins with the correct requester.
 
 
-The pointer updates after every completed grant, ensuring the next arbitration cycle always begins from the correct requester.
 
-2. Simple, Synthesizable Logic
+## 2. Simple, Synthesizable Logic
 
-The rotated request selection is written using a straightforward case(pointer) structure:
+The rotated request selection is implemented using a straight-forward `case(pointer)` structure:
 
 ```verilog
 case (pointer)
@@ -51,7 +47,6 @@ case (pointer)
   2: check 2, then 3, then 0, then 1;
   3: check 3, then 0, then 1, then 2;
 endcase
-```
 
 
 This makes the arbiter:
@@ -61,7 +56,8 @@ This makes the arbiter:
 - efficient in hardware,
 - and 100% synthesizable on all EDA tools.
 
-3. One-Hot Encoded FSM
+**3.One-Hot Encoded FSM**
+## 2. Simple, Synthesizable Logic
 
 S_ideal  – no grant active
 S_0      – requester 0 granted
