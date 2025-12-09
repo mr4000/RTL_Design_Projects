@@ -23,7 +23,7 @@ If a requester drops its request early, the arbiter immediately switches to the 
 ## Key Features
 
  
-### Priority Order Based on Pointer
+1. **Priority Order Based on Pointer**
 
 | pointer | Priority Order     |
 |--------|---------------------|
@@ -36,7 +36,7 @@ The pointer updates **after every completed grant**, ensuring the next arbitrati
 
 
 
-## 2. Simple, Synthesizable Logic
+ 2. **Simple, Synthesizable Logic**
 
 The rotated request selection is implemented using a straight-forward `case(pointer)` structure:
 
@@ -47,7 +47,7 @@ case (pointer)
   2: check 2, then 3, then 0, then 1;
   3: check 3, then 0, then 1, then 2;
 endcase
-
+```
 
 This makes the arbiter:
 
@@ -56,8 +56,9 @@ This makes the arbiter:
 - efficient in hardware,
 - and 100% synthesizable on all EDA tools.
 
-**3.One-Hot Encoded FSM**
-## 2. Simple, Synthesizable Logic
+3. **One-Hot Encoded FSM**
+
+
 
 S_ideal  – no grant active
 S_0      – requester 0 granted
@@ -65,11 +66,11 @@ S_1      – requester 1 granted
 S_2      – requester 2 granted
 S_3      – requester 3 granted
 
-4. Glitch-Free Grants
+4. **Glitch-Free Grants**
 
 The GNT output is synchronously registered, guaranteeing no combinational glitches or short pulses.
 
-5. Fully Synchronous Design
+5. **Fully Synchronous Design**
 
 All critical states (present_state, count, pointer) are flops.
 
