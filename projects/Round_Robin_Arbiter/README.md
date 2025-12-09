@@ -61,9 +61,13 @@ This makes the arbiter:
 
 
 S_ideal  – no grant active
+
 S_0      – requester 0 granted
+
 S_1      – requester 1 granted
+
 S_2      – requester 2 granted
+
 S_3      – requester 3 granted
 
 4. **Glitch-Free Grants**
