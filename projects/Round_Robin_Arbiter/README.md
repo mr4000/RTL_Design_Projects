@@ -44,12 +44,15 @@ The pointer updates after every completed grant, ensuring the next arbitration c
 
 The rotated request selection is written using a straightforward case(pointer) structure:
 
+```verilog
 case (pointer)
-  0: check 0, then 1, then 2, then 3
-  1: check 1, then 2, then 3, then 0
-  2: check 2, then 3, then 0, then 1
-  3: check 3, then 0, then 1, then 2
+  0: check 0, then 1, then 2, then 3;
+  1: check 1, then 2, then 3, then 0;
+  2: check 2, then 3, then 0, then 1;
+  3: check 3, then 0, then 1, then 2;
 endcase
+```
+
 
 This makes the arbiter:
 
